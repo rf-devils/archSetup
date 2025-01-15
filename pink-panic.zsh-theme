@@ -1,6 +1,9 @@
 autoload -U colors && colors
 autoload -Uz add-zsh-hook
 
+LAST_COMMAND=""
+PROMPT_EOL_MARK=''
+
 # Example custom definitions
 local pastel_pink="%F{#e8a5d7}"
 local pastel_indigo="%F{#B2A6FF}"
@@ -23,8 +26,11 @@ else
 fi
 
 _transient_prompt_preexec() {
-  print -n "\033[1A\033[2K\033[1A\033[2K \033[38;5;205m>\033[0m "
+  LAST_COMMAND="$1"
+  print -n "\033[1A\033[2K\033[1A\033[2K \033[38;5;205m>\033[0m ${LAST_COMMAND}
+"
 }
+
 enable_transient_prompt() {
   add-zsh-hook preexec _transient_prompt_preexec
 }
