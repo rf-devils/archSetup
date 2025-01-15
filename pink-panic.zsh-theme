@@ -1,4 +1,5 @@
 autoload -U colors && colors
+autoload -Uz add-zsh-hook
 
 # Example custom definitions
 local pastel_pink="%F{#e8a5d7}"
@@ -20,6 +21,14 @@ if [[ "${plugins[@]}" =~ 'kube-ps1' ]]; then
 else
     local kube_prompt=''
 fi
+
+_transient_prompt_preexec() {
+  print -n "\033[1A\033[2K\033[1A\033[2K \033[38;5;205m>\033[0m "
+}
+enable_transient_prompt() {
+  add-zsh-hook preexec _transient_prompt_preexec
+}
+enable_transient_prompt
 
 ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
 
