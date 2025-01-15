@@ -2,7 +2,7 @@ autoload -U colors && colors
 autoload -Uz add-zsh-hook
 
 LAST_COMMAND=""
-PROMPT_EOL_MARK=''
+PROMPT_EOL_MARK='\b'
 
 # Example custom definitions
 local pastel_pink="%F{#e8a5d7}"
@@ -59,3 +59,4 @@ ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="%{$fg[green]%}‹"
 ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="› %{$reset_color%}"
 ZSH_THEME_VIRTUALENV_PREFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX"
 ZSH_THEME_VIRTUALENV_SUFFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX"
+
